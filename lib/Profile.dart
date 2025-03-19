@@ -22,7 +22,6 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           currentIndex: curr,
@@ -51,10 +50,7 @@ class _ProfileState extends State<Profile> {
               label: "Profile",
             ),
           ]),
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
@@ -151,23 +147,32 @@ class _ProfileState extends State<Profile> {
             SizedBox(
               height: 10,
             ),
-            ListTile(
-              leading: Icon(
-                Icons.dark_mode,
-                size: 30,
-                color: Colors.white60,
-              ),
-              title: Text(
-                "Change Theme",
-                style: TextStyle(
-                  fontSize: 20,
+            InkWell(
+              onTap: () {
+                if (Get.isDarkMode) {
+                  Get.changeTheme(ThemeData.light());
+                } else {
+                  Get.changeTheme(ThemeData.dark());
+                }
+              },
+              child: ListTile(
+                leading: Icon(
+                  Icons.dark_mode,
+                  size: 30,
                   color: Colors.white60,
                 ),
-              ),
-              trailing: Icon(
-                Icons.arrow_forward,
-                size: 30,
-                color: Colors.white60,
+                title: Text(
+                  "Change Theme",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white60,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  size: 30,
+                  color: Colors.white60,
+                ),
               ),
             ),
             SizedBox(
